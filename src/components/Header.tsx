@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 /**
  * Header Component
@@ -34,22 +35,22 @@ export default function Header() {
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? "bg-slate-900/95 backdrop-blur-md shadow-lg"
-                    : "bg-transparent"
+                ? "bg-slate-900/95 backdrop-blur-md shadow-lg"
+                : "bg-transparent"
                 }`}
         >
             <div className="container-custom">
                 <nav className="flex items-center justify-between h-20">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2">
-                        <div className="flex flex-col">
-                            <span className="text-lg font-bold text-white leading-tight">
-                                Future Banks
-                            </span>
-                            <span className="text-xs text-[var(--primary-gold)] font-medium tracking-wider uppercase">
-                                Summit & Awards
-                            </span>
-                        </div>
+                    <Link href="/" className="flex items-center">
+                        <Image
+                            src="/fbs-logo.png"
+                            alt="Future Banks Summit & Awards"
+                            width={180}
+                            height={60}
+                            className="h-12 w-auto"
+                            priority
+                        />
                     </Link>
 
                     {/* Desktop Navigation */}
