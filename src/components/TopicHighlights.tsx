@@ -7,66 +7,67 @@
  */
 export default function TopicHighlights() {
     // Topic cards configuration with varied sizes for bento layout
+    // Grid positions: span-2 = 2 columns, row-span-2 = 2 rows
     const topics = [
         {
             title: "Vision 2030",
             subtitle: "Emergence of the Kingdom as a Global Financial Leader",
             icon: "🎯",
-            size: "large",
+            gridClass: "md:col-span-2 md:row-span-2", // Featured large card
         },
         {
             title: "Digital Transformation",
             subtitle: "The Foundational Platform for Achieving Business Agility",
             icon: "⚡",
-            size: "medium",
+            gridClass: "", // Regular card
         },
         {
             title: "Payments Today & Tomorrow",
             subtitle: "The Future of Digital Payments",
             icon: "💳",
-            size: "medium",
+            gridClass: "", // Regular card
         },
         {
             title: "Next-Gen Customer Experience",
             subtitle: "Providing a Seamless Banking Customer Experience",
             icon: "✨",
-            size: "small",
+            gridClass: "", // Regular card
         },
         {
             title: "Data & Analytics 360°",
             subtitle: "Complete Overview for Banks & Customers",
             icon: "📊",
-            size: "small",
+            gridClass: "", // Regular card
         },
         {
             title: "Open Banking",
             subtitle: "Bringing Legacy Banks and FinTechs Together",
             icon: "🤝",
-            size: "small",
+            gridClass: "md:col-span-2", // Wide card
         },
         {
             title: "Cloud-Powered Agility",
             subtitle: "Key Enabler for Digital Transformation",
             icon: "☁️",
-            size: "medium",
+            gridClass: "", // Regular card
         },
         {
             title: "NBFI Evolution",
             subtitle: "Revolutionizing the Money Market in KSA",
             icon: "📈",
-            size: "small",
+            gridClass: "", // Regular card
         },
         {
             title: "Digital-Only Banks",
             subtitle: "The Rise of 'Invisible Banks' for Gen-Z",
             icon: "📱",
-            size: "small",
+            gridClass: "md:col-span-2", // Regular card
         },
         {
             title: "Banking in the Metaverse",
             subtitle: "Experiential Banking - The Third World Banking",
             icon: "🌐",
-            size: "medium",
+            gridClass: "md:col-span-2", // Regular card
         },
     ];
 
@@ -90,65 +91,55 @@ export default function TopicHighlights() {
                 </div>
 
                 {/* Bento Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-fr">
-                    {topics.map((topic, index) => (
-                        <div
-                            key={index}
-                            className={`card-dark group cursor-pointer relative overflow-hidden ${topic.size === "large"
-                                    ? "lg:col-span-2 lg:row-span-2"
-                                    : topic.size === "medium"
-                                        ? "lg:col-span-2"
-                                        : ""
-                                }`}
-                        >
-                            {/* Glow Effect */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary-gold)]/0 to-[var(--primary-gold)]/0 group-hover:from-[var(--primary-gold)]/5 group-hover:to-[var(--primary-gold)]/10 transition-all duration-500" />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {topics.map((topic, index) => {
+                        const isLarge = topic.gridClass.includes("row-span-2");
+                        return (
+                            <div
+                                key={index}
+                                className={`card-dark group cursor-pointer relative overflow-hidden min-h-[180px] ${topic.gridClass}`}
+                            >
+                                {/* Glow Effect */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary-gold)]/0 to-[var(--primary-gold)]/0 group-hover:from-[var(--primary-gold)]/5 group-hover:to-[var(--primary-gold)]/10 transition-all duration-500" />
 
-                            <div className="relative z-10 h-full flex flex-col">
-                                {/* Icon */}
-                                <div
-                                    className={`text-3xl mb-4 ${topic.size === "large" ? "text-5xl" : ""
-                                        }`}
-                                >
-                                    {topic.icon}
-                                </div>
+                                <div className="relative z-10 h-full flex flex-col p-6">
+                                    {/* Icon */}
+                                    <div className={`mb-4 ${isLarge ? "text-5xl" : "text-3xl"}`}>
+                                        {topic.icon}
+                                    </div>
 
-                                {/* Content */}
-                                <div className="flex-1 flex flex-col justify-end">
-                                    <h3
-                                        className={`font-bold text-white mb-2 group-hover:text-[var(--primary-gold)] transition-colors ${topic.size === "large"
-                                                ? "text-2xl"
-                                                : topic.size === "medium"
-                                                    ? "text-xl"
-                                                    : "text-lg"
-                                            }`}
-                                    >
-                                        {topic.title}
-                                    </h3>
-                                    <p className="text-slate-400 text-sm leading-relaxed">
-                                        {topic.subtitle}
-                                    </p>
-                                </div>
+                                    {/* Content */}
+                                    <div className="flex-1 flex flex-col justify-end">
+                                        <h3
+                                            className={`font-bold text-white mb-2 group-hover:text-[var(--primary-gold)] transition-colors ${isLarge ? "text-2xl" : "text-lg"}`}
+                                        >
+                                            {topic.title}
+                                        </h3>
+                                        <p className={`text-slate-400 leading-relaxed ${isLarge ? "text-base" : "text-sm"}`}>
+                                            {topic.subtitle}
+                                        </p>
+                                    </div>
 
-                                {/* Arrow indicator */}
-                                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <svg
-                                        className="w-5 h-5 text-[var(--primary-gold)]"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={2}
-                                            d="M7 17L17 7M17 7H7M17 7v10"
-                                        />
-                                    </svg>
+                                    {/* Arrow indicator */}
+                                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <svg
+                                            className="w-5 h-5 text-[var(--primary-gold)]"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={2}
+                                                d="M7 17L17 7M17 7H7M17 7v10"
+                                            />
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         </section>
