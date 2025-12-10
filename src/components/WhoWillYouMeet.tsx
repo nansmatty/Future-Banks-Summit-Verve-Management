@@ -99,7 +99,7 @@ export default function WhoWillYouMeet() {
             ),
         },
         {
-            title: "Customer Experience Leaders",
+            title: "Heads of Customer Experience",
             icon: (
                 <svg
                     className="w-6 h-6"
@@ -117,7 +117,7 @@ export default function WhoWillYouMeet() {
             ),
         },
         {
-            title: "Cards & Payments Heads",
+            title: "Heads of Cards & Payments",
             icon: (
                 <svg
                     className="w-6 h-6"
@@ -135,7 +135,7 @@ export default function WhoWillYouMeet() {
             ),
         },
         {
-            title: "Data & Analytics Leaders",
+            title: "Heads of Data & Analytics",
             icon: (
                 <svg
                     className="w-6 h-6"
@@ -173,7 +173,7 @@ export default function WhoWillYouMeet() {
     ];
 
     return (
-        <section className="section-light section-padding">
+        <section id="meet" className="section-light section-padding">
             <div className="container-custom">
                 {/* Section Header */}
                 <div className="text-center max-w-3xl mx-auto mb-12">
@@ -196,7 +196,7 @@ export default function WhoWillYouMeet() {
                     {roles.map((role, index) => (
                         <div
                             key={index}
-                            className="card group flex items-start gap-4 hover:border-[var(--primary-gold)] border-2 border-transparent"
+                            className="card group flex cursor-pointer items-start gap-4 hover:border-[var(--primary-gold)] border-2 border-transparent"
                             style={{ animationDelay: `${index * 0.1}s` }}
                         >
                             {/* Icon Container */}

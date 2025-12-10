@@ -1,9 +1,6 @@
-"use client";
-
 /**
  * Why Attend Section
- * 3-column layout with icons
- * Light section highlighting key benefits
+ * Simple 3-column layout with the key benefits from the document
  */
 export default function WhyAttend() {
     const benefits = [
@@ -23,15 +20,9 @@ export default function WhyAttend() {
                     />
                 </svg>
             ),
-            title: "Industry Insights",
+            title: "Knowledge & Insights",
             description:
-                "Gain knowledge and insights from top industry leaders and experts from across the globe.",
-            points: [
-                "Latest trends in digital banking",
-                "Practical case studies",
-                "Future-ready strategies",
-                "Vision 2030 alignment",
-            ],
+                "Gain knowledge and insights from global industry experts.",
         },
         {
             icon: (
@@ -49,15 +40,8 @@ export default function WhyAttend() {
                     />
                 </svg>
             ),
-            title: "Networking Opportunities",
-            description:
-                "Network with industry peers in a solution-oriented environment designed for meaningful connections.",
-            points: [
-                "500+ industry professionals",
-                "Dedicated networking sessions",
-                "One-on-one meeting opportunities",
-                "Evening reception events",
-            ],
+            title: "Networking",
+            description: "Network with industry peers.",
         },
         {
             icon: (
@@ -75,20 +59,14 @@ export default function WhyAttend() {
                     />
                 </svg>
             ),
-            title: "Partnership Building",
+            title: "Partnerships",
             description:
-                "Discuss significant partnerships and collaborations with industry leaders to drive innovation.",
-            points: [
-                "Meet solution providers",
-                "Explore technology partnerships",
-                "Connect with FinTech innovators",
-                "Build lasting relationships",
-            ],
+                "Discuss partnerships and collaboration opportunities.",
         },
     ];
 
     return (
-        <section className="section-dark section-padding overflow-hidden">
+        <section id="attend" className="section-dark section-padding">
             <div className="container-custom">
                 {/* Section Header */}
                 <div className="text-center max-w-3xl mx-auto mb-12">
@@ -101,8 +79,7 @@ export default function WhyAttend() {
                         Why <span className="text-gradient">Attend?</span>
                     </h2>
                     <p className="text-slate-400">
-                        The 4th Annual Future Banks Summit KSA 2023 will highlight the
-                        enabling role of digitalization in reshaping the future of banking.
+                        Three key reasons to join the 4th Annual Future Banks Summit KSA 2023.
                     </p>
                 </div>
 
@@ -111,10 +88,10 @@ export default function WhyAttend() {
                     {benefits.map((benefit, index) => (
                         <div
                             key={index}
-                            className="card-glass group hover:bg-white/10 transition-all duration-300"
+                            className="card-glass group hover:bg-white/10 transition-all duration-300 text-center"
                         >
                             {/* Icon */}
-                            <div className="w-16 h-16 rounded-2xl bg-[var(--primary-gold)]/20 flex items-center justify-center text-[var(--primary-gold)] mb-6 group-hover:bg-[var(--primary-gold)] group-hover:text-white transition-all duration-300">
+                            <div className="w-16 h-16 rounded-2xl bg-[var(--primary-gold)]/20 flex items-center justify-center text-[var(--primary-gold)] mb-6 mx-auto group-hover:bg-[var(--primary-gold)] group-hover:text-white transition-all duration-300">
                                 {benefit.icon}
                             </div>
 
@@ -124,60 +101,11 @@ export default function WhyAttend() {
                             </h3>
 
                             {/* Description */}
-                            <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                            <p className="text-slate-400 text-sm leading-relaxed">
                                 {benefit.description}
                             </p>
-
-                            {/* Points */}
-                            <ul className="space-y-3">
-                                {benefit.points.map((point, pointIndex) => (
-                                    <li
-                                        key={pointIndex}
-                                        className="flex items-center gap-3 text-sm text-slate-300"
-                                    >
-                                        <svg
-                                            className="w-4 h-4 text-[var(--primary-gold)] shrink-0"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth={2}
-                                                d="M5 13l4 4L19 7"
-                                            />
-                                        </svg>
-                                        {point}
-                                    </li>
-                                ))}
-                            </ul>
                         </div>
                     ))}
-                </div>
-
-                {/* CTA */}
-                <div className="text-center mt-12">
-                    <p className="text-slate-400 mb-6">
-                        Ready to innovate and join the ranks of the brightest minds in the
-                        industry?
-                    </p>
-                    <a href="#register" className="btn-primary">
-                        Register Today
-                        <svg
-                            className="w-5 h-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M17 8l4 4m0 0l-4 4m4-4H3"
-                            />
-                        </svg>
-                    </a>
                 </div>
             </div>
         </section>

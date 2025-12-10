@@ -1,47 +1,11 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Link from "next/link";
 
 /**
  * Hero Section Component
- * Clean hero with event title, date, tagline, and CTAs
+ * Clean hero with event title, date, tagline, and CTA
  * Features gradient background with subtle animation
  */
 export default function Hero() {
-    // Countdown timer state
-    const [countdown, setCountdown] = useState({
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
-    });
-
-    // Calculate countdown to event date (September 11, 2023)
-    useEffect(() => {
-        const eventDate = new Date("2023-09-11T09:00:00").getTime();
-
-        const updateCountdown = () => {
-            const now = new Date().getTime();
-            const distance = eventDate - now;
-
-            if (distance > 0) {
-                setCountdown({
-                    days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-                    hours: Math.floor(
-                        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-                    ),
-                    minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-                    seconds: Math.floor((distance % (1000 * 60)) / 1000),
-                });
-            }
-        };
-
-        updateCountdown();
-        const interval = setInterval(updateCountdown, 1000);
-        return () => clearInterval(interval);
-    }, []);
-
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
             {/* Animated Background Elements */}
@@ -128,9 +92,9 @@ export default function Hero() {
                     </p>
 
                     {/* CTA Buttons */}
-                    <div className="flex flex-wrap items-center justify-center gap-4 mb-16 animate-fade-in animate-delay-3">
-                        <Link href="#register" className="btn-primary text-base px-8 py-4">
-                            Register Now
+                    <div className="flex flex-wrap items-center justify-center gap-4 animate-fade-in animate-delay-3">
+                        <Link href="#overview" className="btn-primary text-base px-8 py-4">
+                            Learn More
                             <svg
                                 className="w-5 h-5"
                                 fill="none"
@@ -145,28 +109,9 @@ export default function Hero() {
                                 />
                             </svg>
                         </Link>
-                        <Link href="#register" className="btn-secondary text-base px-8 py-4">
-                            Become a Sponsor
+                        <Link href="#speakers" className="btn-secondary text-base px-8 py-4">
+                            View Speakers
                         </Link>
-                    </div>
-
-                    {/* Countdown Timer */}
-                    <div className="grid grid-cols-4 gap-4 max-w-md mx-auto animate-fade-in animate-delay-4">
-                        {[
-                            { value: countdown.days, label: "Days" },
-                            { value: countdown.hours, label: "Hours" },
-                            { value: countdown.minutes, label: "Mins" },
-                            { value: countdown.seconds, label: "Secs" },
-                        ].map((item) => (
-                            <div key={item.label} className="card-glass text-center py-4">
-                                <div className="text-2xl md:text-3xl font-bold text-white">
-                                    {String(item.value).padStart(2, "0")}
-                                </div>
-                                <div className="text-xs text-slate-400 uppercase tracking-wider mt-1">
-                                    {item.label}
-                                </div>
-                            </div>
-                        ))}
                     </div>
                 </div>
             </div>

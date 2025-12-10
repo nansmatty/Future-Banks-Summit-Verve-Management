@@ -25,11 +25,10 @@ export default function Header() {
     // Navigation links configuration
     const navLinks = [
         { href: "#overview", label: "Overview" },
+        { href: "#meet", label: "Meet People" },
         { href: "#topics", label: "Topics" },
         { href: "#speakers", label: "Speakers" },
-        { href: "#agenda", label: "Agenda" },
-        { href: "#register", label: "Register" },
-        { href: "#faq", label: "FAQ" },
+        { href: "#attend", label: "Why Attend" },
     ];
 
     return (
